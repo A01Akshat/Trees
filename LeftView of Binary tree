@@ -12,3 +12,6 @@ leftview(list,root.left,level+1);
 leftview(list,root.right,level+1);
 
 }
+
+//
+for right view just interchange lines 11 and 12
