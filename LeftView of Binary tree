@@ -1,0 +1,14 @@
+void leftview(ArrayList list,Node root,int level)  //level is initially zero
+{
+if(root==null)
+return;
+
+if(list.get(level)==null)
+{
+list.add(root);
+}
+
+leftview(list,root.left,level+1);
+leftview(list,root.right,level+1);
+
+}
