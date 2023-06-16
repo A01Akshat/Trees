@@ -1,0 +1,41 @@
+//Check if value of root is equal to sum of left subtree and right sub tree
+
+class Solution
+{
+    
+    int sumtree(Node root)
+    {
+    if(root==null)return 0;
+    
+    if(root.left==null&&root.right==null)
+    return root.data;
+    
+    int l=sumtree(root.left);
+    int r=sumtree(root.right);
+    
+    if(l==-1||r==-1)
+    return -1;
+    
+    if(root.data==l+r)
+    {
+        return root.data+l+r;
+    }
+    else
+    {
+        return -1;
+    }
+    
+    }
+    
+    
+	boolean isSumTree(Node root)
+	{
+       if(sumtree(root)==-1)
+       {
+           return false;
+       }
+       else{
+           return true;
+       }
+	}
+}
