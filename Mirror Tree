@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct node {
+  int val;
+  struct node* left;
+  struct node* right;
+}* Node;
+
+Node create_node(int val) {
+  Node new_node = (Node)malloc(sizeof(struct node));
+  new_node->val = val;
+  return new_node; 
+}
+
+int isMirror(Node r1, Node r2) {
+  if(r1 == NULL && r2 == NULL) return 1;
+  if(r1 != NULL && r2 != NULL) 
+    return r1->val == r2->val && isMirror(r1->right, r2->left) && isMirror(r1->left, r2->right);
+  return 0;
+}
+
+int main() {
+  Node a = create_node(10);
+  Node b = create_node(10);
+
+  a->left = create_node(20);
+  a->right = create_node(13);
+  a->left->left  = create_node(45);
+  a->left->right = create_node(55);
+
+  b->left = create_node(13);
+  b->right = create_node(20);
+  b->right->left = create_node(55);
+  b->right->right = create_node(45);
+
+  if(isMirror(a,b))
+    printf("Both the trees are mirrors of each other");
+  else 
+    printf("Trees are the mirrors of each other");
+
+  return 0;
+}
